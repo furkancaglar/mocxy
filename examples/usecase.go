@@ -10,14 +10,12 @@ func NewAwesomeUsecase(idea MyGeniusIdea) *AwesomeUsecase {
 	return &AwesomeUsecase{idea: idea}
 }
 
-func (au *AwesomeUsecase) EverythingFunc() {
-	var awesome string
-	var worst interface{}
+func (au *AwesomeUsecase) EverythingFunc(param1 string, param2 interface{}) {
 
-	greatReturn, err := au.idea.Smart(awesome, worst)
+	greatReturn, err := au.idea.Smart(param1, param2)
+	fmt.Printf("greatReturn --> %v   ,   err --> %v\n", greatReturn, err)
 	if nil != err {
 		return
 	}
 
-	fmt.Printf("greatReturn --> %v   ,   err --> %v\n", greatReturn, err)
 }
