@@ -4,6 +4,10 @@ import "time"
 
 type (
 	FakeMyGeniusIdea struct {
+		prepare *prepareStruct
+	}
+
+	prepareStruct struct {
 		smartArgs []*smartArgs
 	}
 
@@ -40,15 +44,15 @@ func (f *FakeMyGeniusIdea) Smart(awesome string, worst interface{}) (greatReturn
 }
 
 // Prepare for conventional fit. For example: `&FakeMyGeniusIdea{}.Prepare().SmartAllAny()`
-func (f *FakeMyGeniusIdea) Prepare() *FakeMyGeniusIdea {
-	return f
+func (f *FakeMyGeniusIdea) Prepare() *prepareStruct {
+	return &prepareStruct{}
 }
 
 // SmartAllAny creates a new `smartArgs` and sets all args to any.
 //
 // IMPORTANT NOTE: This means anything will be accepted when the `Smart` method called.
 //
-func (f *FakeMyGeniusIdea) SmartAllAny() *smartArgs {
+func (p *prepareStruct) SmartAllAny() *smartArgs {
 	var args = &smartArgs{
 		awesome: struct {
 			value string
@@ -68,7 +72,7 @@ func (f *FakeMyGeniusIdea) SmartAllAny() *smartArgs {
 		}{any: true},
 	}
 
-	f.smartArgs = append(f.smartArgs, args)
+	p.smartArgs = append(p.smartArgs, args)
 
 	return args
 }
