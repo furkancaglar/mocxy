@@ -1,7 +1,10 @@
 package examples
 
-import "time"
+import (
+	"mocxy/generation"
+	"time"
+)
 
 type MyGeniusIdea interface {
-	Smart(awesome string, worst interface{}) (greatReturn time.Time, err error)
+	Smart( generation.XX,  interface{}) (greatReturn time.Time, err error)
 }
